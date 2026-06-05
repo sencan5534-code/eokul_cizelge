@@ -23,8 +23,8 @@ total_col = 9
 CRITERIA = list(criteria_cols.keys())
 
 PERF_COLUMNS = {
-    "1.Perf": "I",
-    "2.Perf": "J"
+    "1. Performans Listesi": "I",
+    "2. Performans Listesi": "J"
 }
 
 
@@ -155,7 +155,7 @@ def create_perf_sheet(
     perf_name,
     perf_col
 ):
-    new_sheet_name = f"{source_sheet_name} {perf_name} list"
+    new_sheet_name = f"{source_sheet_name} {perf_name}"
 
     if new_sheet_name in wb.sheetnames:
         del wb[new_sheet_name]
@@ -274,11 +274,10 @@ def process_excel(input_file, output_file):
     template_ws = wb[TEMPLATE_SHEET]
 
     source_sheets = [
-        s for s in wb.sheetnames
-        if s != TEMPLATE_SHEET
-        and "1.Perf list" not in s
-        and "2.Perf list" not in s
-        and not s.endswith(" list")
+    s for s in wb.sheetnames
+    if s != TEMPLATE_SHEET
+    and "1. Performans Listesi" not in s
+    and "2. Performans Listesi" not in s
     ]
 
     for source_sheet_name in source_sheets:
@@ -296,8 +295,8 @@ def process_excel(input_file, output_file):
 
     for sheet_name in wb.sheetnames[:]:
         if not (
-            "1.Perf list" in sheet_name
-            or "2.Perf list" in sheet_name
+            "1. Performans Listesi" in sheet_name
+            or "2. Performans Listesi" in sheet_name
         ):
             del wb[sheet_name]
 

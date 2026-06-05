@@ -160,7 +160,8 @@ if create_clicked and uploaded_file is not None:
                 temp_input.write(uploaded_file.read())
                 input_path = temp_input.name
 
-            output_file_name = "E_okul_template_doldurulmus.xlsx"
+            base_name = uploaded_file.name.replace(".xlsx", "")
+            output_file_name = f"{base_name}_doldurulmus.xlsx"
 
             with tempfile.NamedTemporaryFile(
                 delete=False,
